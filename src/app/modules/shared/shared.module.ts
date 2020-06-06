@@ -3,10 +3,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Material
-import {
-  MatButtonModule,
-  MatRippleModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
 
 // Components
 
