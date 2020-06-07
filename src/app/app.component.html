@@ -1,4 +1,21 @@
 <div class="app-wrapper">
-  <button mat-raised-button color="primary">Click Me!</button>
+  <span class="align-tool"></span>
+  <div class="noselect app-container">
+
+    <div class="card-section-wrapper">
+      <span class="align-tool"></span>
+      <div class="card-section-container">
+        <div class="info-card-general" tilt [tiltSettings]="tiltSettings" *ngFor="let info of dataService.infoCards; let i = index;"
+             (touchstart)="onHover([true, ['infoCards', i]])" (touchend)="onHover([false, ['infoCards', i]])"
+             [ngClass]="(((i == i) && uiService.hoverStatus.cards.info[i].card) ? 'info-card-hover' : 'info-card-idle')"
+             [ngStyle]="{'z-index': 1000 - i}"
+        >{{info.name}}
+        </div>
+      </div>
+      <span class="align-tool"></span>
+    </div>
+
+  </div>
+  <span class="align-tool"></span>
 </div>
 

@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularTiltModule } from '../angular-tilt/angular-tilt.module';
+import 'hammerjs';
 
 // Material
 import { MatButtonModule } from '@angular/material/button';
@@ -8,10 +9,14 @@ import { MatRippleModule } from '@angular/material/core';
 
 // Components
 
+// Services
+import { UIService } from '../../services/ui.service';
+import { DataService } from '../../services/data.service';
+
 @NgModule({
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
+    AngularTiltModule,
     MatButtonModule,
     MatRippleModule
   ],
@@ -19,9 +24,17 @@ import { MatRippleModule } from '@angular/material/core';
   entryComponents: [],
   exports: [
     MatButtonModule,
+    AngularTiltModule,
     MatRippleModule
   ],
   providers: []
 })
 
-export class SharedModule { }
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [UIService, DataService]
+    };
+  }
+}
